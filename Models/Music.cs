@@ -7,13 +7,20 @@ namespace SoundApi.Models
     public class Music
     {
         // Properties
-        public int MusicId { get; set; }
+        public int Id { get; set; }
         [Required]
         public string? Artist { get; set; }
         [Required]
         public string? Title { get; set; }
         [Required]
         public int? Length { get; set; }
+
+        // Include GenreId as a foreign key
+        [Required]
+        [ForeignKey("Genre")]
+        public int GenreId { get; set; }
+        // Genre navigation property
+        public Genre? Genre { get; set; }
 
     }
 
