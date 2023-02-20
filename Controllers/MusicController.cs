@@ -94,6 +94,8 @@ namespace SoundApi.Controllers
         public async Task<ActionResult<Music>> PostMusic(Music music)
         {
 
+            await _context.Musics.Include(m => m.Genre).ToListAsync();
+
             if (_context.Musics == null)
             {
                 return Problem("Entity set 'MusicContext.Musics'  is null.");
