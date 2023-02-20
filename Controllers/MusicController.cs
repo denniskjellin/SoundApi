@@ -29,10 +29,10 @@ namespace SoundApi.Controllers
             // This line, includes the music genre to the json response
             var music = await _context.Musics.Include(m => m.Genre).ToListAsync();
 
-          if (_context.Musics == null)
-          {
-              return NotFound();
-          }
+            if (_context.Musics == null)
+            {
+                return NotFound();
+            }
             return await _context.Musics.ToListAsync();
         }
 
@@ -40,11 +40,14 @@ namespace SoundApi.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<Music>> GetMusic(int id)
         {
-          if (_context.Musics == null)
-          {
-              return NotFound();
-          }
-            var music = await _context.Musics.FindAsync(id);
+            // This line, includes the music genre to the json response
+            var music = await _context.Musics.Include(m => m.Genre).FirstOrDefaultAsync(m => m.Id == id);
+
+            if (_context.Musics == null)
+            {
+                return NotFound();
+            }
+
 
             if (music == null)
             {
@@ -90,10 +93,11 @@ namespace SoundApi.Controllers
         [HttpPost]
         public async Task<ActionResult<Music>> PostMusic(Music music)
         {
-          if (_context.Musics == null)
-          {
-              return Problem("Entity set 'MusicContext.Musics'  is null.");
-          }
+
+            if (_context.Musics == null)
+            {
+                return Problem("Entity set 'MusicContext.Musics'  is null.");
+            }
             _context.Musics.Add(music);
             await _context.SaveChangesAsync();
 
