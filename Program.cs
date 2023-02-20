@@ -11,7 +11,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 // DB Connections
-builder.Services.AddDbContext<MusicContext>(options => options.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection")));
+builder.Services.AddDbContext<MusicContext>(options => options.UseSqlite(builder.Configuration.GetConnectionString("DefaultDbString")));
 
 var app = builder.Build();
 
