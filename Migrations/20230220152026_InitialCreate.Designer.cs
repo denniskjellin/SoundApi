@@ -11,7 +11,7 @@ using SoundApi.Data;
 namespace SoundApi.Migrations
 {
     [DbContext(typeof(MusicContext))]
-    [Migration("20230220141505_InitialCreate")]
+    [Migration("20230220152026_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -22,7 +22,7 @@ namespace SoundApi.Migrations
 
             modelBuilder.Entity("SoundApi.Models.Genre", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("GenreId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
@@ -30,7 +30,7 @@ namespace SoundApi.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.HasKey("Id");
+                    b.HasKey("GenreId");
 
                     b.ToTable("Genres");
                 });

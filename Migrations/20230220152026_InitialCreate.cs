@@ -14,13 +14,13 @@ namespace SoundApi.Migrations
                 name: "Genres",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "INTEGER", nullable: false)
+                    GenreId = table.Column<int>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
                     Name = table.Column<string>(type: "TEXT", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Genres", x => x.Id);
+                    table.PrimaryKey("PK_Genres", x => x.GenreId);
                 });
 
             migrationBuilder.CreateTable(
@@ -41,7 +41,7 @@ namespace SoundApi.Migrations
                         name: "FK_Musics_Genres_GenreId",
                         column: x => x.GenreId,
                         principalTable: "Genres",
-                        principalColumn: "Id",
+                        principalColumn: "GenreId",
                         onDelete: ReferentialAction.Cascade);
                 });
 

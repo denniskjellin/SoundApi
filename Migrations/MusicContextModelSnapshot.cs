@@ -19,7 +19,7 @@ namespace SoundApi.Migrations
 
             modelBuilder.Entity("SoundApi.Models.Genre", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("GenreId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
@@ -27,7 +27,7 @@ namespace SoundApi.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.HasKey("Id");
+                    b.HasKey("GenreId");
 
                     b.ToTable("Genres");
                 });

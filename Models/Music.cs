@@ -17,9 +17,8 @@ namespace SoundApi.Models
 
         // Include GenreId as a foreign key
         [Required]
-        [ForeignKey("Genre")]
+        [ForeignKey("GenreId")]
         public int GenreId { get; set; }
-        // Genre navigation property
         public Genre? Genre { get; set; }
 
     }
@@ -27,7 +26,7 @@ namespace SoundApi.Models
     public class Genre
     {
         // Properties
-        public int Id { get; set; }
+        public int GenreId { get; set; }
         [Required]
         public string? Name { get; set; }
     }

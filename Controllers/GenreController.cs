@@ -55,7 +55,7 @@ namespace SoundApi.Controllers
         [HttpPut("{id}")]
         public async Task<IActionResult> PutGenre(int id, Genre genre)
         {
-            if (id != genre.Id)
+            if (id != genre.GenreId)
             {
                 return BadRequest();
             }
@@ -93,7 +93,7 @@ namespace SoundApi.Controllers
             _context.Genres.Add(genre);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetGenre", new { id = genre.Id }, genre);
+            return CreatedAtAction("GetGenre", new { id = genre.GenreId }, genre);
         }
 
         // DELETE: api/Genre/5
@@ -118,7 +118,7 @@ namespace SoundApi.Controllers
 
         private bool GenreExists(int id)
         {
-            return (_context.Genres?.Any(e => e.Id == id)).GetValueOrDefault();
+            return (_context.Genres?.Any(e => e.GenreId == id)).GetValueOrDefault();
         }
     }
 }

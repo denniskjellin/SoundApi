@@ -25,6 +25,10 @@ namespace SoundApi.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Music>>> GetMusics()
         {
+
+            // This line, includes the music genre to the json response
+            var music = await _context.Musics.Include(m => m.Genre).ToListAsync();
+
           if (_context.Musics == null)
           {
               return NotFound();
