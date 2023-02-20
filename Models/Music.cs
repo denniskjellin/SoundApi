@@ -13,7 +13,7 @@ namespace SoundApi.Models {
         [Required]
         public int? Length { get; set; }
         [Required]
-        [ForeignKey("MusicGenre")]
+        [ForeignKey("GenreId")]
         public int GenreId { get; set; }
         public Genre? MusicGenre { get; set; }
 
