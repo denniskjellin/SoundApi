@@ -15,19 +15,13 @@ namespace SoundApi.Models
         [Required]
         public int? Length { get; set; }
 
-        // Setting a foreign key property (connecting Music and genre)
-        public int GenreId { get; set; }
-
-        // Setting a navigation property (get the genre)
-        [ForeignKey("GenreId")]
-        public Genre? Genre { get; set; }
     }
 
     public class Genre
     {
         // Properties
-        public int GenreId { get; set; }
+        public int Id { get; set; }
         [Required]
-        public string? GenreName { get; set; }
+        public string? Name { get; set; }
     }
 }
