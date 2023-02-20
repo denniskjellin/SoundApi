@@ -62,6 +62,7 @@ namespace SoundApi.Controllers
         [HttpPut("{id}")]
         public async Task<IActionResult> PutMusic(int id, Music music)
         {
+
             if (id != music.Id)
             {
                 return BadRequest();
@@ -85,7 +86,11 @@ namespace SoundApi.Controllers
                 }
             }
 
-            return NoContent();
+            /*return NoContent();*/
+            // This line, includes the music genre to the json response
+            await _context.Musics.Include(m => m.Genre).FirstOrDefaultAsync(m => m.Id == id);
+            return CreatedAtAction("GetMusic", new { id = music.Id }, music);
+            
         }
 
         // POST: api/Music
@@ -110,6 +115,7 @@ namespace SoundApi.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteMusic(int id)
         {
+
             if (_context.Musics == null)
             {
                 return NotFound();
